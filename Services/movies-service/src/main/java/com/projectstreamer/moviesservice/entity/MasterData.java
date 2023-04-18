@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Genre {
+public class MasterData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,4 +20,9 @@ public class Genre {
     @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false,unique = true)
+    private String code;
+
+    @Column(nullable = false)
+    private String description;
 }

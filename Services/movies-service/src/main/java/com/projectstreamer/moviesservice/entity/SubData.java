@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Rating {
+public class SubData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,4 +19,12 @@ public class Rating {
 
     @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false,unique = true)
+    private String code;
+
+    @OneToOne(cascade ={CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    @JoinColumn(name = "master_code", referencedColumnName = "code")
+    private MasterData masterData;
+
 }

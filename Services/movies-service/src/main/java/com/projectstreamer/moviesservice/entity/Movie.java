@@ -37,15 +37,15 @@ public class Movie {
 
     @Column(nullable = false)
     @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-    private Set<Genre> genre;
+    private Set<SubData> genre;
 
     @Column(nullable = false)
     @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-    private Set<Language> languages;
+    private Set<SubData> languages;
 
     @OneToOne(fetch = FetchType.EAGER,cascade ={CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     @JoinColumn(name = "rating_id", referencedColumnName = "id")
-    private Rating rating;
+    private SubData rating;
 
     @Column(nullable = false)
     @ManyToMany(fetch = FetchType.EAGER, cascade ={CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})

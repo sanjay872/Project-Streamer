@@ -1,9 +1,9 @@
 package com.projectstreamer.moviesservice.repository;
 
-import com.projectstreamer.moviesservice.entity.Rating;
+import com.projectstreamer.moviesservice.entity.SubData;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RatingRepository extends JpaRepository<Rating,Long> {
+public interface SubDataRepository extends JpaRepository<SubData,Long> {
 }
