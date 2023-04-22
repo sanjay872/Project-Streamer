@@ -6,6 +6,7 @@ import com.projectstreamer.moviesservice.exception.exceptions.CustomNotFoundExce
 import com.projectstreamer.moviesservice.repository.SubMasterDataRepository;
 import com.projectstreamer.moviesservice.service.SubMasterDataService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
@@ -34,8 +35,8 @@ public class SubMasterMasterDataServiceImpl implements SubMasterDataService {
     }
 
     @Override
-    public List<SubMasterData> getAllSubMasterData(int pageNo, int pageSize) {
-        return repository.findAll(PageRequest.of(pageNo,pageSize)).getContent();
+    public Page<SubMasterData> getAllSubMasterData(int pageNo, int pageSize) {
+        return repository.findAll(PageRequest.of(pageNo,pageSize));
     }
 
     @Override

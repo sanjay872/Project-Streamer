@@ -8,6 +8,7 @@ import com.projectstreamer.moviesservice.entity.SubMasterData;
 import com.projectstreamer.moviesservice.facade.SubMasterDataFacade;
 import com.projectstreamer.moviesservice.service.SubMasterDataService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -34,8 +35,9 @@ public class SubMasterMasterDataFacadeImpl implements SubMasterDataFacade {
 
     @Override
     public PageableDto getAllSubMasterData(int pageNo, int pageSize) {
-        List<SubMasterData> subMasterData=service.getAllSubMasterData(pageNo,pageSize);
-        return PageableDto.builder().build();
+        Page<SubMasterData> pagedSubMasterData=service.getAllSubMasterData(pageNo,pageSize);
+        List<SubMasterDataDto> subMasterDataDto=pagedSubMasterData.getContent().stream().map(dataMapper::subMasterDataToSubMasterDataDto).collect(Collectors.toList());
+        return new PageableDto<>(subMasterDataDto,pagedSubMasterData.getTotalElements());
     }
 
     @Override

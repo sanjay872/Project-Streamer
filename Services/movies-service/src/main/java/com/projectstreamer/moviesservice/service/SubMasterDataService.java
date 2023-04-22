@@ -1,6 +1,7 @@
 package com.projectstreamer.moviesservice.service;
 
 import com.projectstreamer.moviesservice.entity.SubMasterData;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -9,7 +10,7 @@ public interface SubMasterDataService {
 
     SubMasterData getSubMasterDataByCode(String code);
 
-    List<SubMasterData> getAllSubMasterData(int pageNo, int pageSize);
+    Page<SubMasterData> getAllSubMasterData(int pageNo, int pageSize);
 
     List<SubMasterData> getSubMasterDataByMasterDataCode(String masterDataCode);
 
