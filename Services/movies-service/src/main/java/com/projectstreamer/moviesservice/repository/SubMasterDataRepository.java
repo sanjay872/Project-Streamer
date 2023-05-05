@@ -15,5 +15,5 @@ public interface SubMasterDataRepository extends JpaRepository<SubMasterData,Lon
     @Query("select s from SubMasterData s where s.masterDataCode = ?1")
     List<SubMasterData> findAllByMasterDataCode(String masterDataCode);
 
-    Optional<SubMasterData> getCodeAndNotId(String code, Long id);
+    Optional<SubMasterData> getByCodeAndIdNot(String code, Long id);
 }

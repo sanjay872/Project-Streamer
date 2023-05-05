@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
 import java.util.Set;
 
 @Data
@@ -30,7 +29,7 @@ public class Movie {
     private String thumbnailUrl;
 
     @Column(nullable = false)
-    private Date releasedDate;
+    private String releasedYear;
 
     @Column(nullable = false)
     private String duration;

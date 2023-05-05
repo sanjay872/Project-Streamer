@@ -46,7 +46,7 @@ public class SubMasterMasterDataServiceImpl implements SubMasterDataService {
 
     @Override
     public void updateSubMasterData(SubMasterData subMasterData) {
-        if(repository.getCodeAndNotId(subMasterData.getCode(),subMasterData.getId()).isPresent())
+        if(repository.getByCodeAndIdNot(subMasterData.getCode(),subMasterData.getId()).isPresent())
             throw new CustomException("Sub Master Data Already Exist");
         repository.save(subMasterData);
     }

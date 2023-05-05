@@ -39,7 +39,7 @@ public class MasterDataServiceImpl implements MasterDataService {
 
     @Override
     public void updateMasterData(MasterData masterData) {
-        if(repository.getCodeAndNotId(masterData.getCode(),masterData.getId()).isPresent())
+        if(repository.getByCodeAndIdNot(masterData.getCode(),masterData.getId()).isPresent())
             throw new CustomException("Master Data Already Exist");
         repository.save(masterData);
     }

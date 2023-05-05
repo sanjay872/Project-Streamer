@@ -10,5 +10,5 @@ import java.util.Optional;
 public interface MasterDataRepository extends JpaRepository<MasterData,Long> {
     Optional<MasterData> findByCode(String code);
 
-    Optional<MasterData> getCodeAndNotId(String code, Long id);
+    Optional<MasterData> getByCodeAndIdNot(String code, Long id);
 }
