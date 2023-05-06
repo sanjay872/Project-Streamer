@@ -10,11 +10,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableAspectJAutoProxy(proxyTargetClass = true)
 @OpenAPIDefinition(info = @Info(title = "Auth Service", version="1.0.0"))
 @SecurityScheme(name = "BearerJWT",type = SecuritySchemeType.HTTP, scheme = "Bearer",bearerFormat = "JWT",
 description = "Bearer token")
