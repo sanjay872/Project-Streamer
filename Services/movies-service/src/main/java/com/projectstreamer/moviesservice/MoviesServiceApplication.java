@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
-//@EnableDiscoveryClient
+@EnableDiscoveryClient
 @OpenAPIDefinition(info = @Info(title = "Movie Service", version="1.0.0"))
 public class MoviesServiceApplication {
 

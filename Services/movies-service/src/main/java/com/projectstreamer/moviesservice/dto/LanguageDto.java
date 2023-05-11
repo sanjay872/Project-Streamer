@@ -1,6 +1,5 @@
 package com.projectstreamer.moviesservice.dto;
 
-import com.projectstreamer.moviesservice.entity.MasterData;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,9 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class SubMasterDataDto {
+public class LanguageDto {
     private Long id;
-    private String name;
-    private String code;
-    private MasterDataDto masterData;
+    private String title;
+    private String description;
 }

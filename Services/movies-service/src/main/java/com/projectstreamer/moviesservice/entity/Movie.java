@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.util.Set;
 
 @Data
 @Builder
@@ -16,7 +16,7 @@ import java.util.List;
 public class Movie {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
@@ -38,17 +38,21 @@ public class Movie {
     private Long rating;
 
     @Column(nullable = false)
-    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-    private List<SubMasterData> genre;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    @JoinTable(name = "movies_and_genre",joinColumns = @JoinColumn(name = "movie_id",referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id",referencedColumnName = "id"))
+    private Set<Genre> genre;
 
     @Column(nullable = false)
-    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-    private List<SubMasterData> languages;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    @JoinTable(name = "movies_and_languages",joinColumns = @JoinColumn(name = "movie_id",referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "language_id",referencedColumnName = "id"))
+    private Set<Language> languages;
 
     @Column(nullable = false)
-    @ManyToMany(fetch = FetchType.EAGER, cascade ={CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-    @JoinTable(name = "movie_and_starring",joinColumns = @JoinColumn(name = "movie_id",referencedColumnName = "id"),
+    @ManyToMany(fetch = FetchType.LAZY, cascade ={CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    @JoinTable(name = "movies_and_starring",joinColumns = @JoinColumn(name = "movie_id",referencedColumnName = "id"),
     inverseJoinColumns = @JoinColumn(name = "starring_id",referencedColumnName = "id"))
-    private List<Starring> starring;
+    private Set<Starring> starring;
 
 }

@@ -9,9 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class MasterDataDto {
+public class GenreDto {
     private Long id;
-    private String name;
-    private String code;
+    private String title;
     private String description;
 }

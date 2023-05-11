@@ -11,21 +11,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Starring {
+public class Genre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String firstName;
+    @Column(nullable = false, unique = true)
+    private String title;
 
-    @Column()
-    private String lastName;
-
-    @Column(columnDefinition ="TEXT")
-    private String about;
-
-    @Column(columnDefinition = "TEXT")
-    private String imageUrl;
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String description;
 }

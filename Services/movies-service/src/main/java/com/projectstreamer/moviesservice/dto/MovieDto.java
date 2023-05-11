@@ -19,7 +19,7 @@ public class MovieDto {
     private String releasedYear;
     private String duration;
     private Long rating;
-    private Set<SubMasterDataDto> genre;
-    private Set<SubMasterDataDto> languages;
+    private Set<GenreDto> genre;
+    private Set<LanguageDto> languages;
     private Set<StarringDto> starring;
 }
