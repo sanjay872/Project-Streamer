@@ -1,8 +1,10 @@
 package com.projectstreamer.moviesservice.service.serviceImpl;
 
+import com.projectstreamer.moviesservice.entity.MasterData;
 import com.projectstreamer.moviesservice.entity.SubMasterData;
 import com.projectstreamer.moviesservice.exception.exceptions.CustomException;
 import com.projectstreamer.moviesservice.exception.exceptions.CustomNotFoundException;
+import com.projectstreamer.moviesservice.repository.MasterDataRepository;
 import com.projectstreamer.moviesservice.repository.SubMasterDataRepository;
 import com.projectstreamer.moviesservice.service.SubMasterDataService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +21,19 @@ public class SubMasterMasterDataServiceImpl implements SubMasterDataService {
     @Autowired
     private SubMasterDataRepository repository;
 
+    @Autowired
+    private MasterDataRepository masterDataRepository;
+
     @Override
     public Long createSubMasterData(SubMasterData subMasterData) {
         if(repository.findByCode(subMasterData.getCode()).isPresent())
             throw new CustomException("Sub Master Data Already Exist");
-        return repository.save(subMasterData).getId();
+        Optional<MasterData> masterData=masterDataRepository.findByCode(subMasterData.getMasterData().getCode());
+        if(masterData.isPresent()){
+            subMasterData.setMasterData(masterData.get());
+            return repository.save(subMasterData).getId();
+        }
+        throw new CustomNotFoundException("Master Data Not Found");
     }
 
     @Override

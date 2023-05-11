@@ -1,10 +1,10 @@
 package com.projectstreamer.moviesservice.facade.facadeImpl;
 
 import com.projectstreamer.moviesservice.datamapper.SubMasterDataMapper;
-import com.projectstreamer.moviesservice.dto.MasterDataDto;
 import com.projectstreamer.moviesservice.dto.PageableDto;
 import com.projectstreamer.moviesservice.dto.SubMasterDataDto;
 import com.projectstreamer.moviesservice.entity.SubMasterData;
+import com.projectstreamer.moviesservice.exception.exceptions.CustomException;
 import com.projectstreamer.moviesservice.facade.SubMasterDataFacade;
 import com.projectstreamer.moviesservice.service.SubMasterDataService;
 import org.springframework.beans.factory.annotation.Autowired;

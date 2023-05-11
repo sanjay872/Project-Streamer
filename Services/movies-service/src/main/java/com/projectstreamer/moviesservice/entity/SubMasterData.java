@@ -25,6 +25,6 @@ public class SubMasterData {
 
     @OneToOne(cascade ={CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     @JoinColumn(name = "master_code", referencedColumnName = "code")
-    private MasterData masterDataCode;
+    private MasterData masterData;
 
 }

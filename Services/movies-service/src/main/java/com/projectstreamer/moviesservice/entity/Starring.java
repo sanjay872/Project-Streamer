@@ -23,9 +23,9 @@ public class Starring {
     @Column()
     private String lastName;
 
-    @Column()
+    @Column(columnDefinition ="TEXT")
     private String about;
 
-    @Column()
+    @Column(columnDefinition = "TEXT")
     private String imageUrl;
 }

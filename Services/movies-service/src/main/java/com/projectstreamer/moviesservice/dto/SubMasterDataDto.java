@@ -14,5 +14,5 @@ public class SubMasterDataDto {
     private Long id;
     private String name;
     private String code;
-    private MasterData masterData;
+    private MasterDataDto masterData;
 }
