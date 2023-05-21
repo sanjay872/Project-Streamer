@@ -1,8 +1,8 @@
-package com.projectstreamer.moviesservice.facade.facadeImpl;
+package com.projectstreamer.moviesservice.dtoService.dtoServiceImpl;
 
 import com.projectstreamer.moviesservice.datamapper.LanguageDataMapper;
 import com.projectstreamer.moviesservice.dto.LanguageDto;
-import com.projectstreamer.moviesservice.facade.LanguageFacade;
+import com.projectstreamer.moviesservice.dtoService.LanguageDtoService;
 import com.projectstreamer.moviesservice.service.LanguageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public class LanguageFacadeImpl implements LanguageFacade {
+public class LanguageDtoServiceImpl implements LanguageDtoService {
 
     @Autowired
     private LanguageService service;

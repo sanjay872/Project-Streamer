@@ -1,9 +1,9 @@
-package com.projectstreamer.moviesservice.facade;
+package com.projectstreamer.moviesservice.dtoService;
 
 import com.projectstreamer.moviesservice.dto.GenreDto;
 import java.util.List;
 
-public interface GenreFacade {
+public interface GenreDtoService {
     Long createGenre(GenreDto genreDto);
 
     GenreDto getGenreByTitle(String title);

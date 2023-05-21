@@ -1,7 +1,7 @@
 package com.projectstreamer.moviesservice.controller;
 
 import com.projectstreamer.moviesservice.dto.GenreDto;
-import com.projectstreamer.moviesservice.facade.GenreFacade;
+import com.projectstreamer.moviesservice.dtoService.GenreDtoService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,14 +15,14 @@ import java.util.List;
 public class GenreController {
 
     @Autowired
-    private GenreFacade facade;
+    private GenreDtoService dtoService;
 
     @PostMapping
     @Operation(
             operationId = "createGenre",
             summary = "Create Genre")
     public ResponseEntity<Long> createGenre(@RequestBody GenreDto genreDto){
-        return new ResponseEntity<Long>(facade.createGenre(genreDto), HttpStatus.CREATED);
+        return new ResponseEntity<Long>(dtoService.createGenre(genreDto), HttpStatus.CREATED);
     }
 
     @GetMapping("/title/{title}")
@@ -30,7 +30,7 @@ public class GenreController {
             operationId = "getGenreByTitle",
             summary = "Get Genre By Title")
     public ResponseEntity<GenreDto> getGenreByTitle(@PathVariable("title") String title){
-        return new ResponseEntity<GenreDto>(facade.getGenreByTitle(title),HttpStatus.OK);
+        return new ResponseEntity<GenreDto>(dtoService.getGenreByTitle(title),HttpStatus.OK);
     }
 
     @GetMapping("/all")
@@ -38,7 +38,7 @@ public class GenreController {
             operationId = "getAllGenre",
             summary = "Get All Genre")
     public ResponseEntity<List<GenreDto>> getAllGenre(){
-        return new ResponseEntity<List<GenreDto>>(facade.getAllGenre(),HttpStatus.OK);
+        return new ResponseEntity<List<GenreDto>>(dtoService.getAllGenre(),HttpStatus.OK);
     }
 
     @PutMapping
@@ -46,7 +46,7 @@ public class GenreController {
             operationId = "updateGenre",
             summary = "Update Genre")
     public ResponseEntity updateGenre(@RequestBody GenreDto genreDto){
-        facade.updateGenre(genreDto);
+        dtoService.updateGenre(genreDto);
         return new ResponseEntity(HttpStatus.OK);
     }
 
@@ -55,7 +55,7 @@ public class GenreController {
             operationId = "deleteGenreById",
             summary = "Delete Genre By Id")
     public ResponseEntity deleteGenreById(@PathVariable("id") Long id){
-        facade.deleteGenreById(id);
+        dtoService.deleteGenreById(id);
         return new ResponseEntity(HttpStatus.OK);
     }
 }

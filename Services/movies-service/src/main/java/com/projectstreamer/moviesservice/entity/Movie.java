@@ -35,7 +35,7 @@ public class Movie {
     private String duration;
 
     @Column(nullable = false)
-    private Long rating;
+    private Float rating;
 
     @Column(nullable = false)
     @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
@@ -50,9 +50,7 @@ public class Movie {
     private Set<Language> languages;
 
     @Column(nullable = false)
-    @ManyToMany(fetch = FetchType.LAZY, cascade ={CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-    @JoinTable(name = "movies_and_starring",joinColumns = @JoinColumn(name = "movie_id",referencedColumnName = "id"),
-    inverseJoinColumns = @JoinColumn(name = "starring_id",referencedColumnName = "id"))
-    private Set<Starring> starring;
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "role")
+    private Set<Role> cast;
 
 }

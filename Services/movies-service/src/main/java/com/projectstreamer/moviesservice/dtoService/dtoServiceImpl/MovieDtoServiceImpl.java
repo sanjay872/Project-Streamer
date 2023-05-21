@@ -1,10 +1,10 @@
-package com.projectstreamer.moviesservice.facade.facadeImpl;
+package com.projectstreamer.moviesservice.dtoService.dtoServiceImpl;
 
 import com.projectstreamer.moviesservice.datamapper.MovieDataMapper;
 import com.projectstreamer.moviesservice.dto.MovieDto;
 import com.projectstreamer.moviesservice.dto.PageableDto;
 import com.projectstreamer.moviesservice.entity.Movie;
-import com.projectstreamer.moviesservice.facade.MovieFacade;
+import com.projectstreamer.moviesservice.dtoService.MovieDtoService;
 import com.projectstreamer.moviesservice.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class MovieFacadeImpl implements MovieFacade {
+public class MovieDtoServiceImpl implements MovieDtoService {
 
     @Autowired
     private MovieService service;

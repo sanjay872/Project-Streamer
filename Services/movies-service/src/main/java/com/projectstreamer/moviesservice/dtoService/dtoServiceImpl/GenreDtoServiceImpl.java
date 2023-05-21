@@ -1,8 +1,8 @@
-package com.projectstreamer.moviesservice.facade.facadeImpl;
+package com.projectstreamer.moviesservice.dtoService.dtoServiceImpl;
 
 import com.projectstreamer.moviesservice.datamapper.GenreDataMapper;
 import com.projectstreamer.moviesservice.dto.GenreDto;
-import com.projectstreamer.moviesservice.facade.GenreFacade;
+import com.projectstreamer.moviesservice.dtoService.GenreDtoService;
 import com.projectstreamer.moviesservice.service.GenreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public class GenreFacadeImpl implements GenreFacade {
+public class GenreDtoServiceImpl implements GenreDtoService {
 
     @Autowired
     private GenreService service;
