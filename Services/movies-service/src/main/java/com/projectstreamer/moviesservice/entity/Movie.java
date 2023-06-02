@@ -1,17 +1,15 @@
 package com.projectstreamer.moviesservice.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Set;
 
-@Data
-@Builder
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity
 public class Movie {
 
@@ -49,8 +47,7 @@ public class Movie {
             inverseJoinColumns = @JoinColumn(name = "language_id",referencedColumnName = "id"))
     private Set<Language> languages;
 
-    @Column(nullable = false)
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "role")
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "movie")
     private Set<Role> cast;
 
 }

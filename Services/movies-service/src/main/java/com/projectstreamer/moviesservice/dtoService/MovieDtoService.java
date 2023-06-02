@@ -2,6 +2,9 @@ package com.projectstreamer.moviesservice.dtoService;
 
 import com.projectstreamer.moviesservice.dto.MovieDto;
 import com.projectstreamer.moviesservice.dto.PageableDto;
+import com.projectstreamer.moviesservice.dto.RoleDto;
+
+import java.util.Set;
 
 public interface MovieDtoService {
     Long createMovie(MovieDto movieDto);
@@ -10,9 +13,11 @@ public interface MovieDtoService {
 
     PageableDto getAllMovie(int pageNo, int pageSize);
 
-    PageableDto getMoviesByFilter(int pageNo, int pageSize, String title, String releasedYear, String genre, String rating, String language);
+    PageableDto getMoviesByFilter(int pageNo, int pageSize, String title, String releasedYear, Float rating, String genre, String language);
 
     void updateMovie(MovieDto movieDto);
 
     void deleteMovieById(Long id);
+
+    void updateCast(Set<RoleDto> cast, Long movieId);
 }

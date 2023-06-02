@@ -5,6 +5,8 @@ import com.projectstreamer.moviesservice.exception.exceptions.CustomNotFoundExce
 import com.projectstreamer.moviesservice.repository.RoleRepository;
 import com.projectstreamer.moviesservice.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -32,5 +34,10 @@ public class RoleServiceImpl implements RoleService {
             repository.deleteById(id);
         else
             throw new CustomNotFoundException("Role Id Not Found");
+    }
+
+    @Override
+    public Page<Role> getRolesByMovieId(Long id, int pageNo, int pageSize) {
+        return repository.findRolesByMovieId(id, PageRequest.of(pageNo,pageSize));
     }
 }

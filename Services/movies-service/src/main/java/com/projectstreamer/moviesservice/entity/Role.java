@@ -1,15 +1,13 @@
 package com.projectstreamer.moviesservice.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
-@Builder
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity
 public class Role {
     @Id
@@ -20,8 +18,10 @@ public class Role {
     private String role;
 
     @ManyToOne()
+    @JoinColumn(name = "actor",nullable = false, referencedColumnName = "id")
     private Actor actor;
 
     @ManyToOne()
+    @JoinColumn(name = "movie",nullable = false,referencedColumnName = "id")
     private Movie movie;
 }
