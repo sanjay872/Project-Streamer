@@ -1,8 +1,8 @@
-package com.streamer.authservice.facade.facadeImpl;
+package com.streamer.authservice.dtoService.dtoServiceImpl;
 
 import com.streamer.authservice.dataMapper.AuthorityDataMapper;
 import com.streamer.authservice.dto.AuthorityDto;
-import com.streamer.authservice.facade.AuthorityFacade;
+import com.streamer.authservice.dtoService.AuthorityDtoService;
 import com.streamer.authservice.service.AuthorityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class AuthorityFacadeImpl implements AuthorityFacade {
+public class AuthorityDtoServiceImpl implements AuthorityDtoService {
 
     @Autowired
     private AuthorityService service;

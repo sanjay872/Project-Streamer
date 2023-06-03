@@ -1,7 +1,7 @@
 package com.streamer.authservice.controller;
 
 import com.streamer.authservice.dto.RoleDto;
-import com.streamer.authservice.facade.RoleFacade;
+import com.streamer.authservice.dtoService.RoleDtoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import java.util.Set;
 public class RoleController {
 
     @Autowired
-    private RoleFacade facade;
+    private RoleDtoService dtoService;
 
     @PostMapping
     @Operation(
@@ -24,7 +24,7 @@ public class RoleController {
             summary = "Create New Role",
             security = {@SecurityRequirement(name = "BearerJWT")})
     public ResponseEntity<Long> createRole(@RequestBody RoleDto role) {
-        return ResponseEntity.ok(facade.createRole(role));
+        return ResponseEntity.ok(dtoService.createRole(role));
     }
 
     @GetMapping("/all")
@@ -33,7 +33,7 @@ public class RoleController {
             summary = "Get all Roles",
             security = {@SecurityRequirement(name = "BearerJWT")})
     public ResponseEntity<List<RoleDto>> getAllRole() {
-        return ResponseEntity.ok(facade.getAllRole());
+        return ResponseEntity.ok(dtoService.getAllRole());
     }
 
     @GetMapping("/id/{id}")
@@ -42,7 +42,7 @@ public class RoleController {
             summary = "Get a Role by ID",
             security = {@SecurityRequirement(name = "BearerJWT")})
     public ResponseEntity<RoleDto> getRoleById(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(facade.getRoleById(id));
+        return ResponseEntity.ok(dtoService.getRoleById(id));
     }
 
     @GetMapping("/{role}")
@@ -51,7 +51,7 @@ public class RoleController {
             summary = "Get a Role By Name",
             security = {@SecurityRequirement(name = "BearerJWT")})
     public ResponseEntity<RoleDto> getRoleByName(@PathVariable("role") String role) {
-        return ResponseEntity.ok(facade.getRoleByName(role));
+        return ResponseEntity.ok(dtoService.getRoleByName(role));
     }
 
     @PatchMapping
@@ -60,7 +60,7 @@ public class RoleController {
             summary = "Update Role",
             security = {@SecurityRequirement(name = "BearerJWT")})
     public ResponseEntity updateRole(@RequestBody RoleDto role) {
-        facade.updateRole(role);
+        dtoService.updateRole(role);
         return ResponseEntity.ok().build();
     }
 
@@ -70,7 +70,7 @@ public class RoleController {
             summary = "Delete a Role by ID",
             security = {@SecurityRequirement(name = "BearerJWT")})
     public ResponseEntity deleteRole(@PathVariable("id") Long id) {
-        facade.deleteRole(id);
+        dtoService.deleteRole(id);
         return ResponseEntity.ok().build();
     }
 
@@ -80,7 +80,7 @@ public class RoleController {
             summary = "add new Authorities to role",
             security = {@SecurityRequirement(name = "BearerJWT")})
     public ResponseEntity addAuthoritiesToRole(@RequestParam("role") String role, @RequestParam("authorities") Set<String> authorities){
-        facade.addAuthoritiesToRole(role,authorities);
+        dtoService.addAuthoritiesToRole(role,authorities);
         return ResponseEntity.ok().build();
     }
 }

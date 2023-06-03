@@ -2,7 +2,7 @@ package com.streamer.authservice.controller;
 
 import com.streamer.authservice.dto.AccountDto;
 import com.streamer.authservice.dto.AuthResponseDto;
-import com.streamer.authservice.facade.AccountFacade;
+import com.streamer.authservice.dtoService.AccountDtoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AdminController {
 
     @Autowired
-    private AccountFacade facade;
+    private AccountDtoService dtoService;
 
     @PostMapping()
     @Operation(
@@ -26,7 +26,7 @@ public class AdminController {
             summary = "Create New Admin",
             security = {@SecurityRequirement(name = "BearerJWT")})
     public ResponseEntity<AuthResponseDto> createAdmin(@RequestBody AccountDto adminAccount){
-        return new ResponseEntity<AuthResponseDto>(facade.createAdmin(adminAccount), HttpStatus.CREATED);
+        return new ResponseEntity<AuthResponseDto>(dtoService.createAdmin(adminAccount), HttpStatus.CREATED);
     }
 
 }

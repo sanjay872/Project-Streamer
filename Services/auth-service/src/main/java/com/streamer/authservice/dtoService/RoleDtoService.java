@@ -1,11 +1,11 @@
-package com.streamer.authservice.facade;
+package com.streamer.authservice.dtoService;
 
 import com.streamer.authservice.dto.RoleDto;
 
 import java.util.List;
 import java.util.Set;
 
-public interface RoleFacade {
+public interface RoleDtoService {
     Long createRole(RoleDto role);
 
     List<RoleDto> getAllRole();

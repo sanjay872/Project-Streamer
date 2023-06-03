@@ -1,7 +1,7 @@
 package com.streamer.authservice.controller;
 
 import com.streamer.authservice.dto.AuthorityDto;
-import com.streamer.authservice.facade.AuthorityFacade;
+import com.streamer.authservice.dtoService.AuthorityDtoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import java.util.List;
 public class AuthorityController {
 
     @Autowired
-    private AuthorityFacade facade;
+    private AuthorityDtoService dtoService;
 
     @PostMapping()
     @Operation(
@@ -23,7 +23,7 @@ public class AuthorityController {
             summary = "create Authority",
             security = {@SecurityRequirement(name = "BearerJWT")})
     public ResponseEntity<Long> createAuthority(@RequestBody AuthorityDto authorityDto){
-        return ResponseEntity.ok(facade.createAuthority(authorityDto));
+        return ResponseEntity.ok(dtoService.createAuthority(authorityDto));
     }
 
     @GetMapping("/all")
@@ -32,7 +32,7 @@ public class AuthorityController {
             summary = "Get All Authority",
             security = {@SecurityRequirement(name = "BearerJWT")})
     public ResponseEntity<List<AuthorityDto>> getAllAuthority(){
-        return ResponseEntity.ok(facade.getAllAuthority());
+        return ResponseEntity.ok(dtoService.getAllAuthority());
     }
 
     @GetMapping("/id/{id}")
@@ -41,7 +41,7 @@ public class AuthorityController {
             summary = "Get an Authority by ID",
             security = {@SecurityRequirement(name = "BearerJWT")})
     public ResponseEntity<AuthorityDto> getAuthorityById(@PathVariable("id") Long id){
-        return  ResponseEntity.ok(facade.getAuthorityById(id));
+        return  ResponseEntity.ok(dtoService.getAuthorityById(id));
     }
 
     @GetMapping("{authority}")
@@ -50,7 +50,7 @@ public class AuthorityController {
             summary = "Get an Authority By Name",
             security = {@SecurityRequirement(name = "BearerJWT")})
     public ResponseEntity<AuthorityDto> getAuthorityByName(@PathVariable("authority") String authority) {
-        return ResponseEntity.ok(facade.getAuthorityByName(authority));
+        return ResponseEntity.ok(dtoService.getAuthorityByName(authority));
     }
 
     @PutMapping
@@ -59,7 +59,7 @@ public class AuthorityController {
             summary = "Update Authority",
             security = {@SecurityRequirement(name = "BearerJWT")})
     public ResponseEntity updateAuthority(@RequestBody AuthorityDto authorityDto){
-        facade.updateAuthority(authorityDto);
+        dtoService.updateAuthority(authorityDto);
         return ResponseEntity.ok().build();
     }
 
@@ -69,7 +69,7 @@ public class AuthorityController {
             summary = "Delete Authority by ID",
             security = {@SecurityRequirement(name = "BearerJWT")})
     public ResponseEntity deleteAuthority(@PathVariable("id") Long id){
-        facade.deleteAuthority(id);
+        dtoService.deleteAuthority(id);
         return  ResponseEntity.ok().build();
     }
 

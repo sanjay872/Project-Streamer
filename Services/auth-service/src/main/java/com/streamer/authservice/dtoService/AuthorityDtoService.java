@@ -1,10 +1,10 @@
-package com.streamer.authservice.facade;
+package com.streamer.authservice.dtoService;
 
 import com.streamer.authservice.dto.AuthorityDto;
 
 import java.util.List;
 
-public interface AuthorityFacade {
+public interface AuthorityDtoService {
 
     Long createAuthority(AuthorityDto authorityDto);
 

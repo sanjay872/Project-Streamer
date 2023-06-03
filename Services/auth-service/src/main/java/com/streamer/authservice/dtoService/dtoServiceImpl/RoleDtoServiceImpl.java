@@ -1,8 +1,8 @@
-package com.streamer.authservice.facade.facadeImpl;
+package com.streamer.authservice.dtoService.dtoServiceImpl;
 
 import com.streamer.authservice.dataMapper.RoleDataMapper;
 import com.streamer.authservice.dto.RoleDto;
-import com.streamer.authservice.facade.RoleFacade;
+import com.streamer.authservice.dtoService.RoleDtoService;
 import com.streamer.authservice.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Set;
 
 @Service
-public class RoleFacadeImpl implements RoleFacade {
+public class RoleDtoServiceImpl implements RoleDtoService {
 
     @Autowired
     private RoleService service;

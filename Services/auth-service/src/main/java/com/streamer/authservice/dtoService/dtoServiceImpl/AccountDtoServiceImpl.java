@@ -1,4 +1,4 @@
-package com.streamer.authservice.facade.facadeImpl;
+package com.streamer.authservice.dtoService.dtoServiceImpl;
 
 import com.streamer.authservice.dataMapper.AccountDataMapper;
 import com.streamer.authservice.dto.AccountDto;
@@ -6,7 +6,7 @@ import com.streamer.authservice.dto.AuthDto;
 import com.streamer.authservice.dto.AuthResponseDto;
 import com.streamer.authservice.dto.PageableDto;
 import com.streamer.authservice.entity.Account;
-import com.streamer.authservice.facade.AccountFacade;
+import com.streamer.authservice.dtoService.AccountDtoService;
 import com.streamer.authservice.security.JwtService;
 import com.streamer.authservice.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class AccountFacadeImpl implements AccountFacade {
+public class AccountDtoServiceImpl implements AccountDtoService {
 
     @Autowired
     private AccountService service;

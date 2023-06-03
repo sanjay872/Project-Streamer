@@ -1,11 +1,11 @@
-package com.streamer.authservice.facade;
+package com.streamer.authservice.dtoService;
 
 import com.streamer.authservice.dto.AccountDto;
 import com.streamer.authservice.dto.AuthDto;
 import com.streamer.authservice.dto.AuthResponseDto;
 import com.streamer.authservice.dto.PageableDto;
 
-public interface AccountFacade {
+public interface AccountDtoService {
     AuthResponseDto registerAccount(AuthDto auth);
 
     AuthResponseDto authenticateAccount(AuthDto auth);
