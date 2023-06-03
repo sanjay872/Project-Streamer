@@ -8,12 +8,6 @@ spring:
             - Path=/movies-service/**
           filters:
             - AuthenticationFilter
-        - id: tv-shows-service
-          uri: lb://TV-SHOWS-SERVICE
-          predicates:
-            - Path=/tv-shows-service/**
-          filters:
-            - AuthenticationFilter
         - id: watchlist-service
           uri: lb://WATCHLIST-SERVICE
           predicates:
