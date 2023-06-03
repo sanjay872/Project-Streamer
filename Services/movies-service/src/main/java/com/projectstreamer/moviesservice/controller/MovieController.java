@@ -68,6 +68,9 @@ public class MovieController {
     }
 
     @PutMapping("/cast")
+    @Operation(
+            operationId = "updateCast",
+            summary = "update Cast")
     public ResponseEntity updateCast(@RequestBody Set<RoleDto> cast, @RequestParam("movieId") Long movieId){
         dtoService.updateCast(cast,movieId);
         return new ResponseEntity(HttpStatus.OK);
