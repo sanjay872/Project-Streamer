@@ -47,7 +47,7 @@ public class MovieDtoServiceImpl implements MovieDtoService {
     }
 
     @Override
-    public PageableDto getMoviesByFilter(int pageNo, int pageSize, String title, String releasedYear, Float rating, String genre, String language) {
+    public PageableDto getMoviesByFilter(int pageNo, int pageSize, String title, Long releasedYear, Float rating, String genre, String language) {
         Page<Movie> moviesPaged=service.getMoviesByFilter(pageNo,pageSize,title,releasedYear,rating,genre,language);
         List<MovieDto> movies=moviesPaged.getContent().stream().map(dataMapper::movieToMovieDto).toList();
         return new PageableDto<>(movies,moviesPaged.getTotalElements());

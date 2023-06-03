@@ -27,7 +27,7 @@ public class Movie {
     private String thumbnailUrl;
 
     @Column(nullable = false)
-    private String releasedYear;
+    private Long releasedYear;
 
     @Column(nullable = false)
     private String duration;

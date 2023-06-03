@@ -45,8 +45,8 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public Page<Movie> getMoviesByFilter(int pageNo, int pageSize, String title, String releasedYear,Float rating, String genre, String language) {
-        return repository.findMovieByTitleIgnoreCaseContainingOrReleasedYearOrRatingOrGenreOrLanguages(title,releasedYear,rating,genre,language,PageRequest.of(pageNo,pageSize));
+    public Page<Movie> getMoviesByFilter(int pageNo, int pageSize, String title, Long releasedYear,Float rating, String genre, String language) {
+        return repository.findMovieByTitleIgnoreCaseContainingOrReleasedYearGreaterThanEqualOrRatingGreaterThanEqualOrGenreOrLanguages(title,releasedYear,rating,genre,language,PageRequest.of(pageNo,pageSize));
     }
 
     @Override

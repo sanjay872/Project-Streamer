@@ -52,7 +52,7 @@ public class MovieController {
             summary = "Get Movies by Filter")
     public ResponseEntity<PageableDto> getMovieByFilter(@RequestParam @Min(value = 1,message = "Min 1 value required")  int pageNo,
                                                               @RequestParam @Min(value = 1,message = "Min 1 value required") @Max(value = 100, message = "Max 100 value") int pageSize,
-                                                              @RequestParam(required = false) String title, @RequestParam(required = false) String releasedYear,
+                                                              @RequestParam(required = false) String title, @RequestParam(required = false) Long releasedYear,
                                                               @RequestParam(required = false) String genre, @RequestParam(required = false) Float rating,
                                                               @RequestParam(required = false) String language){
         return new ResponseEntity<PageableDto>(dtoService.getMoviesByFilter(pageNo-1,pageSize,title,releasedYear,rating,genre,language), HttpStatus.OK);

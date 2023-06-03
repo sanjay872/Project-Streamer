@@ -13,7 +13,7 @@ public interface MovieDtoService {
 
     PageableDto getAllMovie(int pageNo, int pageSize);
 
-    PageableDto getMoviesByFilter(int pageNo, int pageSize, String title, String releasedYear, Float rating, String genre, String language);
+    PageableDto getMoviesByFilter(int pageNo, int pageSize, String title, Long releasedYear, Float rating, String genre, String language);
 
     void updateMovie(MovieDto movieDto);
 

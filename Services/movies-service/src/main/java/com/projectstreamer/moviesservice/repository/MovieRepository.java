@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MovieRepository extends JpaRepository<Movie,Long> {
-   Page<Movie> findMovieByTitleIgnoreCaseContainingOrReleasedYearOrRatingOrGenreOrLanguages(String title,String releasedYear,Float rating, String genre, String language, Pageable pageable);
+   Page<Movie> findMovieByTitleIgnoreCaseContainingOrReleasedYearGreaterThanEqualOrRatingGreaterThanEqualOrGenreOrLanguages(String title,Long releasedYear,Float rating, String genre, String language, Pageable pageable);
 }

@@ -13,7 +13,7 @@ public interface MovieService {
 
     Page<Movie> getAllMovie(int pageNo, int pageSize);
 
-    Page<Movie> getMoviesByFilter(int pageNo, int pageSize, String title, String releasedYear, Float rating, String genre, String language);
+    Page<Movie> getMoviesByFilter(int pageNo, int pageSize, String title, Long releasedYear, Float rating, String genre, String language);
 
     void updateMovie(Movie movie);
 

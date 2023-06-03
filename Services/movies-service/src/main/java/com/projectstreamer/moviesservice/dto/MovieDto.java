@@ -14,7 +14,7 @@ public class MovieDto {
     private String title;
     private String description;
     private String thumbnailUrl;
-    private String releasedYear;
+    private Long releasedYear;
     private String duration;
     private Float rating;
     private Set<GenreDto> genre;
