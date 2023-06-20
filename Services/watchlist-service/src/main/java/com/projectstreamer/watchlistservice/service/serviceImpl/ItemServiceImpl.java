@@ -8,6 +8,8 @@ import com.projectstreamer.watchlistservice.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class ItemServiceImpl implements ItemService {
 
@@ -34,6 +36,14 @@ public class ItemServiceImpl implements ItemService {
     public void deleteItem(Long id) {
         if(repository.existsByDataId(id))
             repository.deleteByDataId(id);
+        throw  new CustomNotFoundException("Item not found");
+    }
+
+    @Override
+    public Item getItemById(Long id) {
+        Optional<Item> item=repository.findById(id);
+        if(item.isPresent())
+            return item.get();
         throw  new CustomNotFoundException("Item not found");
     }
 }

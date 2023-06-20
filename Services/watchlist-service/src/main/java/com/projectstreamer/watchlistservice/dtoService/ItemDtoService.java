@@ -8,4 +8,6 @@ public interface ItemDtoService {
     void updateItem(ItemDto itemDto);
 
     void deleteItem(Long id);
+
+    ItemDto getItemById(Long id);
 }

@@ -1,5 +1,6 @@
 package com.projectstreamer.watchlistservice.controller;
 
+import com.projectstreamer.watchlistservice.dto.ItemDto;
 import com.projectstreamer.watchlistservice.dto.WatchListDto;
 import com.projectstreamer.watchlistservice.dtoService.WatchListDtoService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -7,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/v1/watchlist")
@@ -46,6 +49,23 @@ public class WatchListController {
             summary = "Delete WatchList")
     public ResponseEntity deleteWatchList(@PathVariable("id") Long id){
         dtoService.deleteWatchList(id);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}/items")
+    @Operation(
+            operationId = "getWatchListItems",
+            summary = "Get WatchList Items")
+    public ResponseEntity getWatchListItems(@PathVariable("id") Long id){
+        return new ResponseEntity<Set<ItemDto>>(dtoService.getWatchListItems(id),HttpStatus.OK);
+    }
+
+    @PatchMapping("/{id}/items")
+    @Operation(
+            operationId = "updateWatchListItems",
+            summary = "Update WatchList Items")
+    public ResponseEntity updateWatchListItems(@PathVariable("id") Long id, @RequestBody ItemDto itemDto){
+        dtoService.updateWatchListItems(id,itemDto);
         return new ResponseEntity(HttpStatus.OK);
     }
 }

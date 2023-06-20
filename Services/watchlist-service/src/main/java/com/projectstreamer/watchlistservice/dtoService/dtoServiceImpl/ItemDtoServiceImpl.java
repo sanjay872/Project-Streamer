@@ -30,4 +30,9 @@ public class ItemDtoServiceImpl implements ItemDtoService {
     public void deleteItem(Long id) {
         service.deleteItem(id);
     }
+
+    @Override
+    public ItemDto getItemById(Long id) {
+        return dataMapper.ItemToItemDto(service.getItemById(id));
+    }
 }

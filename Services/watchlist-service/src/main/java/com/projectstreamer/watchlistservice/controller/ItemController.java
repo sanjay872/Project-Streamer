@@ -23,6 +23,14 @@ public class ItemController {
         return new ResponseEntity<Long>(dtoService.createItem(itemDto), HttpStatus.CREATED);
     }
 
+    @GetMapping("/{id}")
+    @Operation(
+            operationId = "getItemById",
+            summary = "Get Item By Id")
+    public ResponseEntity getItemById(@PathVariable("id") Long id){
+        return new ResponseEntity<ItemDto>(dtoService.getItemById(id),HttpStatus.OK);
+    }
+
     @PutMapping
     @Operation(
             operationId = "updateItem",

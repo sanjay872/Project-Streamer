@@ -8,4 +8,6 @@ public interface ItemService {
     void updateItem(Item item);
 
     void deleteItem(Long id);
+
+    Item getItemById(Long id);
 }
