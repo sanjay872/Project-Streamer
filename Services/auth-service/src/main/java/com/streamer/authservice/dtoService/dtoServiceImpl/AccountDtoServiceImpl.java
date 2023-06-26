@@ -75,4 +75,9 @@ public class AccountDtoServiceImpl implements AccountDtoService {
         String generatedToken=jwtService.generateToken(account);
         return AuthResponseDto.builder().userId(account.getUserId()).token(generatedToken).build();
     }
+
+    @Override
+    public void validateToken(String token) {
+        jwtService.isTokenValid(token);
+    }
 }

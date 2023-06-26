@@ -3,6 +3,7 @@ package com.projectstreamer.moviesservice.controller;
 import com.projectstreamer.moviesservice.dto.GenreDto;
 import com.projectstreamer.moviesservice.dtoService.GenreDtoService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,8 @@ public class GenreController {
     @PostMapping
     @Operation(
             operationId = "createGenre",
-            summary = "Create Genre")
+            summary = "Create Genre",
+            security = {@SecurityRequirement(name = "BearerJWT")})
     public ResponseEntity<Long> createGenre(@RequestBody GenreDto genreDto){
         return new ResponseEntity<Long>(dtoService.createGenre(genreDto), HttpStatus.CREATED);
     }
@@ -28,7 +30,8 @@ public class GenreController {
     @GetMapping("/title/{title}")
     @Operation(
             operationId = "getGenreByTitle",
-            summary = "Get Genre By Title")
+            summary = "Get Genre By Title",
+            security = {@SecurityRequirement(name = "BearerJWT")})
     public ResponseEntity<GenreDto> getGenreByTitle(@PathVariable("title") String title){
         return new ResponseEntity<GenreDto>(dtoService.getGenreByTitle(title),HttpStatus.OK);
     }
@@ -36,7 +39,8 @@ public class GenreController {
     @GetMapping("/all")
     @Operation(
             operationId = "getAllGenre",
-            summary = "Get All Genre")
+            summary = "Get All Genre",
+            security = {@SecurityRequirement(name = "BearerJWT")})
     public ResponseEntity<List<GenreDto>> getAllGenre(){
         return new ResponseEntity<List<GenreDto>>(dtoService.getAllGenre(),HttpStatus.OK);
     }
@@ -44,7 +48,8 @@ public class GenreController {
     @PutMapping
     @Operation(
             operationId = "updateGenre",
-            summary = "Update Genre")
+            summary = "Update Genre",
+            security = {@SecurityRequirement(name = "BearerJWT")})
     public ResponseEntity updateGenre(@RequestBody GenreDto genreDto){
         dtoService.updateGenre(genreDto);
         return new ResponseEntity(HttpStatus.OK);
@@ -53,7 +58,8 @@ public class GenreController {
     @DeleteMapping("/{id}")
     @Operation(
             operationId = "deleteGenreById",
-            summary = "Delete Genre By Id")
+            summary = "Delete Genre By Id",
+            security = {@SecurityRequirement(name = "BearerJWT")})
     public ResponseEntity deleteGenreById(@PathVariable("id") Long id){
         dtoService.deleteGenreById(id);
         return new ResponseEntity(HttpStatus.OK);

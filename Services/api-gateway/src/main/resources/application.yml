@@ -1,23 +1,9 @@
+server:
+  port: 8989
 spring:
-  cloud:
-    gateway:
-      routes:
-        - id: movies-service
-          uri: lb://MOVIES-SERVICE
-          predicates:
-            - Path=/movies-service/**
-          filters:
-            - AuthenticationFilter
-        - id: watchlist-service
-          uri: lb://WATCHLIST-SERVICE
-          predicates:
-            - Path=/watchlist-service/**
-          filters:
-            - AuthenticationFilter
   application:
-    name: API-GATEWAY
-
-eureka:
-  client:
-    service-url:
-      defaultZone : http://localhost:8761/eureka/
+    name: api-gateway
+  profiles:
+    active: ${activatedProperties:dev}
+  config:
+    import: optional:configserver:${configUri:http://localhost:8888/}

@@ -4,6 +4,7 @@ import com.projectstreamer.moviesservice.dto.PageableDto;
 import com.projectstreamer.moviesservice.dto.RoleDto;
 import com.projectstreamer.moviesservice.dtoService.RoleDtoService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,8 @@ public class RoleController {
     @PostMapping
     @Operation(
             operationId = "createRole",
-            summary = "Create Role")
+            summary = "Create Role",
+            security = {@SecurityRequirement(name = "BearerJWT")})
     public ResponseEntity<Long> createRole(@RequestBody RoleDto roleDto){
         return new ResponseEntity<Long>(dtoService.createRole(roleDto), HttpStatus.CREATED);
     }
@@ -29,7 +31,8 @@ public class RoleController {
     @GetMapping()
     @Operation(
             operationId = "getRolesByMovieId",
-            summary = "Get Roles By Movies Id")
+            summary = "Get Roles By Movies Id",
+            security = {@SecurityRequirement(name = "BearerJWT")})
     public ResponseEntity<PageableDto> getRolesByMovieId(@RequestParam("movieId") Long id,
                                                          @RequestParam("pageNo") @Min(value = 1,message = "Min 1 value required") int pageNo,
                                                          @RequestParam("pageSize") @Min(value = 1,message = "Min 1 value required") @Max(value = 100, message = "Max 100 value") int pageSize){
@@ -39,7 +42,8 @@ public class RoleController {
     @PatchMapping
     @Operation(
             operationId = "updateRole",
-            summary = "Update Role")
+            summary = "Update Role",
+            security = {@SecurityRequirement(name = "BearerJWT")})
     public ResponseEntity updateRole(@RequestBody RoleDto roleDto){
         dtoService.updateRole(roleDto);
         return new ResponseEntity(HttpStatus.OK);
@@ -48,7 +52,8 @@ public class RoleController {
     @DeleteMapping("/{id}")
     @Operation(
             operationId = "deleteRoleById",
-            summary = "Delete Role By Id")
+            summary = "Delete Role By Id",
+            security = {@SecurityRequirement(name = "BearerJWT")})
     public ResponseEntity deleteRoleById(@PathVariable("id") Long id){
         dtoService.deleteRoleById(id);
         return new ResponseEntity(HttpStatus.OK);

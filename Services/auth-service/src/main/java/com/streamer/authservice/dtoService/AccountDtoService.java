@@ -21,4 +21,6 @@ public interface AccountDtoService {
     void updatePassword(AccountDto account);
 
     AuthResponseDto createAdmin(AccountDto adminAccount);
+
+    void validateToken(String token);
 }

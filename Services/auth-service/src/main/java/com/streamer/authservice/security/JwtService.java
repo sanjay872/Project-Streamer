@@ -2,6 +2,7 @@ package com.streamer.authservice.security;
 
 import com.streamer.authservice.exception.exceptions.CustomException;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
@@ -51,6 +52,10 @@ public class JwtService {
     public boolean isTokenValid(String token, UserDetails userDetails){
         final String userName=extractUserEmail(token);
         return  !isTokenExpired(token) && userName.equals(userDetails.getUsername());
+    }
+
+    public void isTokenValid(String token){
+            Jwts.parserBuilder().setSigningKey(getSignInKey()).build().parseClaimsJws(token);
     }
 
     private boolean isTokenExpired(String token){
