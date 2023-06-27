@@ -10,9 +10,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@OpenAPIDefinition(info = @Info(title = "Movie Service", version="1.0.0"))
-@SecurityScheme(name = "BearerJWT",type = SecuritySchemeType.HTTP, scheme = "Bearer",bearerFormat = "JWT",
-		description = "Bearer token")
+//@OpenAPIDefinition(info = @Info(title = "Movie Service", version="1.0.0"))
+//@SecurityScheme(name = "BearerJWT",type = SecuritySchemeType.HTTP, scheme = "Bearer",bearerFormat = "JWT",
+//		description = "Bearer token")
 public class MoviesServiceApplication {
 
 	public static void main(String[] args) {

@@ -3,7 +3,6 @@ package com.streamer.authservice.controller;
 import com.streamer.authservice.dto.AuthorityDto;
 import com.streamer.authservice.dtoService.AuthorityDtoService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -14,8 +14,8 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
     @Autowired
     private RouteValidator routeValidator;
 
-    @Autowired
-    private RestTemplate restTemplate;
+//    @Autowired
+//    private RestTemplate restTemplate;
 
     @Autowired
     private JwtService jwtService;
@@ -33,20 +33,24 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
                 if(!exchange.getRequest().getHeaders().containsKey(HttpHeaders.AUTHORIZATION)){
                     throw new RuntimeException("Authorization Header required!");
                 }
-            }
-            String authHeader= exchange.getRequest().getHeaders().get(HttpHeaders.AUTHORIZATION).get(0);
-            if(authHeader!=null && authHeader.startsWith("Bearer ")){
-                String token=authHeader.substring(7);
-                try{
+                String authHeader= exchange.getRequest().getHeaders().get(HttpHeaders.AUTHORIZATION).get(0);
+                if(authHeader!=null && authHeader.startsWith("Bearer ")){
+                    String token=authHeader.substring(7);
 //                    restTemplate.getForEntity(tokenValidateUrl+"?token="+token,String.class);
-                    jwtService.isTokenValid(token);
+                        if(jwtService.isTokenExpired(token)){
+                            throw new RuntimeException("Token Expired!");
+                        }
+                        else {
+                            try {
+                                jwtService.isTokenValid(token);
+                            } catch (Exception e) {
+                                throw new RuntimeException("Token Invalid!");
+                            }
+                        }
                 }
-                catch (Exception e){
-                    throw new RuntimeException("Token Invalid!");
+                else{
+                    throw new RuntimeException("Invalid Token Format");
                 }
-            }
-            else{
-                throw new RuntimeException("Invalid Token Format");
             }
             return chain.filter(exchange);
         }));
