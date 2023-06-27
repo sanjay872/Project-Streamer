@@ -5,7 +5,6 @@ import com.projectstreamer.moviesservice.dto.PageableDto;
 import com.projectstreamer.moviesservice.dto.RoleDto;
 import com.projectstreamer.moviesservice.dtoService.MovieDtoService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +24,7 @@ public class MovieController {
     @PostMapping
     @Operation(
             operationId = "createMovie",
-            summary = "Create Movie",
-            security = {@SecurityRequirement(name = "BearerJWT")})
+            summary = "Create Movie")
     public ResponseEntity<Long> createMovie(@RequestBody MovieDto movieDto){
         return new ResponseEntity<Long>(dtoService.createMovie(movieDto), HttpStatus.CREATED);
     }
@@ -34,8 +32,7 @@ public class MovieController {
     @GetMapping("/id/{id}")
     @Operation(
             operationId = "getMovieById",
-            summary = "Get Movie By Id",
-            security = {@SecurityRequirement(name = "BearerJWT")})
+            summary = "Get Movie By Id")
     public ResponseEntity<MovieDto> getMovieById(@PathVariable Long id){
         return new ResponseEntity<MovieDto>(dtoService.getMovieById(id),HttpStatus.OK);
     }
@@ -43,8 +40,7 @@ public class MovieController {
     @GetMapping("/all")
     @Operation(
             operationId = "getAllMovie",
-            summary = "Get All Movie",
-            security = {@SecurityRequirement(name = "BearerJWT")})
+            summary = "Get All Movie")
     public ResponseEntity<PageableDto> getAllMovie(@RequestParam @Min(value = 1,message = "Min 1 value required")  int pageNo,
                                                          @RequestParam @Min(value = 1,message = "Min 1 value required") @Max(value = 100, message = "Max 100 value") int pageSize){
         return new ResponseEntity<PageableDto>(dtoService.getAllMovie(pageNo-1,pageSize),HttpStatus.OK);
@@ -53,8 +49,7 @@ public class MovieController {
     @GetMapping("/filter")
     @Operation(
             operationId = "getMovieByFilter",
-            summary = "Get Movies by Filter",
-            security = {@SecurityRequirement(name = "BearerJWT")})
+            summary = "Get Movies by Filter")
     public ResponseEntity<PageableDto> getMovieByFilter(@RequestParam @Min(value = 1,message = "Min 1 value required")  int pageNo,
                                                               @RequestParam @Min(value = 1,message = "Min 1 value required") @Max(value = 100, message = "Max 100 value") int pageSize,
                                                               @RequestParam(required = false) String title, @RequestParam(required = false) Long releasedYear,
@@ -66,8 +61,7 @@ public class MovieController {
     @PutMapping
     @Operation(
             operationId = "updateMovie",
-            summary = "Update Movie",
-            security = {@SecurityRequirement(name = "BearerJWT")})
+            summary = "Update Movie")
     public ResponseEntity updateMovie(@RequestBody MovieDto movieDto){
         dtoService.updateMovie(movieDto);
         return new ResponseEntity(HttpStatus.OK);
@@ -76,8 +70,7 @@ public class MovieController {
     @PutMapping("/cast")
     @Operation(
             operationId = "updateCast",
-            summary = "update Cast",
-            security = {@SecurityRequirement(name = "BearerJWT")})
+            summary = "update Cast")
     public ResponseEntity updateCast(@RequestBody Set<RoleDto> cast, @RequestParam("movieId") Long movieId){
         dtoService.updateCast(cast,movieId);
         return new ResponseEntity(HttpStatus.OK);
@@ -86,8 +79,7 @@ public class MovieController {
     @DeleteMapping("/{id}")
     @Operation(
             operationId = "deleteMovieById",
-            summary = "Delete Movie By Id",
-            security = {@SecurityRequirement(name = "BearerJWT")})
+            summary = "Delete Movie By Id")
     public ResponseEntity deleteMovieById(@PathVariable Long id){
         dtoService.deleteMovieById(id);
         return new ResponseEntity(HttpStatus.OK);

@@ -21,8 +21,7 @@ public class RoleController {
     @PostMapping
     @Operation(
             operationId = "createRole",
-            summary = "Create New Role",
-            security = {@SecurityRequirement(name = "BearerJWT")})
+            summary = "Create New Role")
     public ResponseEntity<Long> createRole(@RequestBody RoleDto role) {
         return ResponseEntity.ok(dtoService.createRole(role));
     }
@@ -30,8 +29,7 @@ public class RoleController {
     @GetMapping("/all")
     @Operation(
             operationId = "getAllRole",
-            summary = "Get all Roles",
-            security = {@SecurityRequirement(name = "BearerJWT")})
+            summary = "Get all Roles")
     public ResponseEntity<List<RoleDto>> getAllRole() {
         return ResponseEntity.ok(dtoService.getAllRole());
     }
@@ -39,8 +37,7 @@ public class RoleController {
     @GetMapping("/id/{id}")
     @Operation(
             operationId = "getRoleById",
-            summary = "Get a Role by ID",
-            security = {@SecurityRequirement(name = "BearerJWT")})
+            summary = "Get a Role by ID")
     public ResponseEntity<RoleDto> getRoleById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(dtoService.getRoleById(id));
     }
@@ -48,8 +45,7 @@ public class RoleController {
     @GetMapping("/{role}")
     @Operation(
             operationId = "getRoleByName",
-            summary = "Get a Role By Name",
-            security = {@SecurityRequirement(name = "BearerJWT")})
+            summary = "Get a Role By Name")
     public ResponseEntity<RoleDto> getRoleByName(@PathVariable("role") String role) {
         return ResponseEntity.ok(dtoService.getRoleByName(role));
     }
@@ -57,8 +53,7 @@ public class RoleController {
     @PatchMapping
     @Operation(
             operationId = "updateRole",
-            summary = "Update Role",
-            security = {@SecurityRequirement(name = "BearerJWT")})
+            summary = "Update Role")
     public ResponseEntity updateRole(@RequestBody RoleDto role) {
         dtoService.updateRole(role);
         return ResponseEntity.ok().build();
@@ -67,8 +62,7 @@ public class RoleController {
     @DeleteMapping("/{id}")
     @Operation(
             operationId = "deleteRole",
-            summary = "Delete a Role by ID",
-            security = {@SecurityRequirement(name = "BearerJWT")})
+            summary = "Delete a Role by ID")
     public ResponseEntity deleteRole(@PathVariable("id") Long id) {
         dtoService.deleteRole(id);
         return ResponseEntity.ok().build();
@@ -77,8 +71,7 @@ public class RoleController {
     @PostMapping("/authoritiesToRole")
     @Operation(
             operationId = "addAuthoritiesToRole",
-            summary = "add new Authorities to role",
-            security = {@SecurityRequirement(name = "BearerJWT")})
+            summary = "add new Authorities to role")
     public ResponseEntity addAuthoritiesToRole(@RequestParam("role") String role, @RequestParam("authorities") Set<String> authorities){
         dtoService.addAuthoritiesToRole(role,authorities);
         return ResponseEntity.ok().build();

@@ -21,8 +21,7 @@ public class ItemCategoryController {
     @PostMapping
     @Operation(
             operationId = "createItemCategory",
-            summary = "Create Item Category",
-            security = {@SecurityRequirement(name = "BearerJWT")})
+            summary = "Create Item Category")
     public ResponseEntity createItemCategory(@RequestBody ItemCategoryDto itemCategoryDto){
         return new ResponseEntity<Long>(dtoService.createItemCategory(itemCategoryDto), HttpStatus.CREATED);
     }
@@ -30,8 +29,7 @@ public class ItemCategoryController {
     @GetMapping
     @Operation(
             operationId = "getAllItemCategory",
-            summary = "Get All Item Category",
-            security = {@SecurityRequirement(name = "BearerJWT")})
+            summary = "Get All Item Category")
     public ResponseEntity getAllItemCategory(){
         return new ResponseEntity<List<ItemCategoryDto>>(dtoService.getAllItemCategory(),HttpStatus.OK);
     }
@@ -39,8 +37,7 @@ public class ItemCategoryController {
     @PutMapping
     @Operation(
             operationId = "updateItemCategory",
-            summary = "Update Item Category",
-            security = {@SecurityRequirement(name = "BearerJWT")})
+            summary = "Update Item Category")
     public ResponseEntity updateItemCategory(@RequestBody ItemCategoryDto itemCategoryDto){
         dtoService.updateItemCategory(itemCategoryDto);
         return new ResponseEntity(HttpStatus.OK);
@@ -49,8 +46,7 @@ public class ItemCategoryController {
     @DeleteMapping("/{id}")
     @Operation(
             operationId = "deleteItemCategory",
-            summary = "Delete Item Category",
-            security = {@SecurityRequirement(name = "BearerJWT")})
+            summary = "Delete Item Category")
     public ResponseEntity deleteItemCategory(@PathVariable("id") Long id){
         dtoService.deleteItemCategory(id);
         return new ResponseEntity(HttpStatus.OK);

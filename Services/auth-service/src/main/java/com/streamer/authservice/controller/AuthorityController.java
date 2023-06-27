@@ -20,8 +20,7 @@ public class AuthorityController {
     @PostMapping()
     @Operation(
             operationId = "createAuthority",
-            summary = "create Authority",
-            security = {@SecurityRequirement(name = "BearerJWT")})
+            summary = "create Authority")
     public ResponseEntity<Long> createAuthority(@RequestBody AuthorityDto authorityDto){
         return ResponseEntity.ok(dtoService.createAuthority(authorityDto));
     }
@@ -29,8 +28,7 @@ public class AuthorityController {
     @GetMapping("/all")
     @Operation(
             operationId = "getAllAuthority",
-            summary = "Get All Authority",
-            security = {@SecurityRequirement(name = "BearerJWT")})
+            summary = "Get All Authority")
     public ResponseEntity<List<AuthorityDto>> getAllAuthority(){
         return ResponseEntity.ok(dtoService.getAllAuthority());
     }
@@ -38,8 +36,7 @@ public class AuthorityController {
     @GetMapping("/id/{id}")
     @Operation(
             operationId = "getAuthorityById",
-            summary = "Get an Authority by ID",
-            security = {@SecurityRequirement(name = "BearerJWT")})
+            summary = "Get an Authority by ID")
     public ResponseEntity<AuthorityDto> getAuthorityById(@PathVariable("id") Long id){
         return  ResponseEntity.ok(dtoService.getAuthorityById(id));
     }
@@ -47,8 +44,7 @@ public class AuthorityController {
     @GetMapping("{authority}")
     @Operation(
             operationId = "getAuthorityByName",
-            summary = "Get an Authority By Name",
-            security = {@SecurityRequirement(name = "BearerJWT")})
+            summary = "Get an Authority By Name")
     public ResponseEntity<AuthorityDto> getAuthorityByName(@PathVariable("authority") String authority) {
         return ResponseEntity.ok(dtoService.getAuthorityByName(authority));
     }
@@ -56,8 +52,7 @@ public class AuthorityController {
     @PutMapping
     @Operation(
             operationId = "updateAuthority",
-            summary = "Update Authority",
-            security = {@SecurityRequirement(name = "BearerJWT")})
+            summary = "Update Authority")
     public ResponseEntity updateAuthority(@RequestBody AuthorityDto authorityDto){
         dtoService.updateAuthority(authorityDto);
         return ResponseEntity.ok().build();
@@ -66,8 +61,7 @@ public class AuthorityController {
     @DeleteMapping("/{id}")
     @Operation(
             operationId = "deleteAuthority",
-            summary = "Delete Authority by ID",
-            security = {@SecurityRequirement(name = "BearerJWT")})
+            summary = "Delete Authority by ID")
     public ResponseEntity deleteAuthority(@PathVariable("id") Long id){
         dtoService.deleteAuthority(id);
         return  ResponseEntity.ok().build();

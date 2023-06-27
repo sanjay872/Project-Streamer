@@ -3,7 +3,6 @@ package com.projectstreamer.watchlistservice.controller;
 import com.projectstreamer.watchlistservice.dto.ItemDto;
 import com.projectstreamer.watchlistservice.dtoService.ItemDtoService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +18,7 @@ public class ItemController {
     @PostMapping
     @Operation(
             operationId = "createItem",
-            summary = "Create Item",
-            security = {@SecurityRequirement(name = "BearerJWT")})
+            summary = "Create Item")
     public ResponseEntity createItem(@RequestBody ItemDto itemDto){
         return new ResponseEntity<Long>(dtoService.createItem(itemDto), HttpStatus.CREATED);
     }
@@ -28,8 +26,7 @@ public class ItemController {
     @GetMapping("/{id}")
     @Operation(
             operationId = "getItemById",
-            summary = "Get Item By Id",
-            security = {@SecurityRequirement(name = "BearerJWT")})
+            summary = "Get Item By Id")
     public ResponseEntity getItemById(@PathVariable("id") Long id){
         return new ResponseEntity<ItemDto>(dtoService.getItemById(id),HttpStatus.OK);
     }
@@ -37,8 +34,7 @@ public class ItemController {
     @PutMapping
     @Operation(
             operationId = "updateItem",
-            summary = "Update Item",
-            security = {@SecurityRequirement(name = "BearerJWT")})
+            summary = "Update Item")
     public ResponseEntity updateItem(@RequestBody ItemDto itemDto){
         dtoService.updateItem(itemDto);
         return  new ResponseEntity(HttpStatus.OK);
@@ -47,8 +43,7 @@ public class ItemController {
     @DeleteMapping("/{id}")
     @Operation(
             operationId = "deleteItem",
-            summary = "Delete Item",
-            security = {@SecurityRequirement(name = "BearerJWT")})
+            summary = "Delete Item")
     public ResponseEntity deleteItem(@PathVariable("id") Long id){
         dtoService.deleteItem(id);
         return new ResponseEntity(HttpStatus.OK);

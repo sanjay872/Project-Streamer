@@ -23,8 +23,7 @@ public class AdminController {
     @PostMapping()
     @Operation(
             operationId = "createAdmin",
-            summary = "Create New Admin",
-            security = {@SecurityRequirement(name = "BearerJWT")})
+            summary = "Create New Admin")
     public ResponseEntity<AuthResponseDto> createAdmin(@RequestBody AccountDto adminAccount){
         return new ResponseEntity<AuthResponseDto>(dtoService.createAdmin(adminAccount), HttpStatus.CREATED);
     }

@@ -20,8 +20,7 @@ public class AccountController {
     @GetMapping("/all")
     @Operation(
             operationId = "getAllAccount",
-            summary = "All Accounts Paginated",
-            security = {@SecurityRequirement(name = "BearerJWT")})
+            summary = "All Accounts Paginated")
     @RolesAllowed({"ADMIN"})
     public ResponseEntity<PageableDto> getAllAccount(@RequestParam() int pageNo,
                                                      @RequestParam() int pageSize,
@@ -32,8 +31,7 @@ public class AccountController {
     @GetMapping("/{userId}")
     @Operation(
             operationId = "getAccountByUserId",
-            summary = "Get a Account by UserId",
-            security = {@SecurityRequirement(name = "BearerJWT")})
+            summary = "Get a Account by UserId")
     @RolesAllowed({"ADMIN","USER"})
     public ResponseEntity<AccountDto> getAccountByUserId(@PathVariable String userId){
         return ResponseEntity.ok(dtoService.getAccount(userId));
@@ -42,8 +40,7 @@ public class AccountController {
     @PutMapping("/email")
     @Operation(
             operationId = "updateEmail",
-            summary = "Change Email",
-            security = {@SecurityRequirement(name = "BearerJWT")})
+            summary = "Change Email")
     @RolesAllowed({"ADMIN","USER"})
     public ResponseEntity updateEmail(@RequestBody AccountDto account){
         dtoService.updateEmail(account);
@@ -53,8 +50,7 @@ public class AccountController {
     @PutMapping("/password")
     @Operation(
             operationId = "updatePassword",
-            summary = "Change Password",
-            security = {@SecurityRequirement(name = "BearerJWT")})
+            summary = "Change Password")
     @RolesAllowed({"ADMIN","USER"})
     public ResponseEntity updatePassword(@RequestBody AccountDto account){
         dtoService.updatePassword(account);
@@ -63,8 +59,7 @@ public class AccountController {
     @DeleteMapping("/{userId}")
     @Operation(
             operationId = "deleteAccountByUserId",
-            summary = "Delete a Account using UserId",
-            security = {@SecurityRequirement(name = "BearerJWT")})
+            summary = "Delete a Account using UserId")
     @RolesAllowed({"ADMIN","USER"})
     public ResponseEntity deleteAccountByUserId(@PathVariable("userId") String userId){
         dtoService.deleteAccount(userId);
