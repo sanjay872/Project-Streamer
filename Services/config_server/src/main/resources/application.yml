@@ -5,7 +5,7 @@ spring:
     config:
       server:
         git:
-          uri: C:\Project Streamer Config
+          uri: C:\Projects\Project Streamer Config
           search-paths: '{application}'
           defaultLabel: master
 server:
